@@ -1,0 +1,17 @@
+{
+  "name": "vue-press",
+  "version": "1.0.0",
+  "description": "vue-press",
+  "author": "zyh9 <1124596031@qq.com>",
+  "license": "ISC",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "dep": "bash deploy.sh"
+  },
+  "devDependencies": {
+    "valine": "^1.3.4",
+    "vuepress": "^0.14.10",
+    "vuepress-theme-reco": "^0.2.1"
+  }
+}
