@@ -41,12 +41,17 @@ module.exports = {
                 text: "文章",
                 icon: "reco-category",
                 items: [{
-                    text: "taro",
-                    link: "/taro/",
-                }, {
-                    text: "mpvue",
-                    link: "/mpvue/"
-                }]
+                        text: "taro",
+                        link: "/taro/",
+                    }, {
+                        text: "mpvue",
+                        link: "/mpvue/"
+                    },
+                    {
+                        text: "移动端",
+                        link: "/mobile/"
+                    }
+                ]
             }, {
                 text: "标签",
                 icon: "reco-tag",
@@ -74,6 +79,13 @@ module.exports = {
                 collapsable: true,
                 children: [
                     "mpvue踩坑之旅"
+                ]
+            }],
+            "/mobile/": [{
+                title: "移动端",
+                collapsable: true,
+                children: [
+                    "移动端总结"
                 ]
             }]
         },
