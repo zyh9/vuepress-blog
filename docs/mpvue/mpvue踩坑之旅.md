@@ -506,17 +506,17 @@ mpvue踩坑之旅，持续更新中...
 ```javascript
 	const isAuth = (name) => {
 		return new Promise((resolve, reject) => {
-			Taro.getSetting({
-			success: (res) => {
-				if (res.authSetting[name]) {
-				resolve();
-				} else {
-				reject();
+			wx.getSetting({
+				success: (res) => {
+					if (res.authSetting[name]) {
+						resolve();
+					} else {
+						reject();
+					}
+				},
+				fail: (err) => {
+					reject(err);
 				}
-			},
-			fail: (err) => {
-				reject(err);
-			}
 			})
 		})
 	}
