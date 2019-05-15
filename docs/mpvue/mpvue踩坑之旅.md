@@ -209,7 +209,7 @@ mpvue踩坑之旅，持续更新中...
 		let editHeaders = Object.assign({}, { 'content-type': 'application/json' }, commonHeader())
 		opt.headers && (editHeaders = Object.assign({}, editHeaders, opt.headers))
 		return new Promise((resolve, reject) => {
-			let address = str ? `${opt.url}?${str}&t=${time}` : `${url}?t=${time}`;
+			let address = str ? `${opt.url}?${str}&t=${time}` : `${opt.url}?t=${time}`;
 			wx.request({
 				url: baseUrl + address,
 				header: editHeaders,
