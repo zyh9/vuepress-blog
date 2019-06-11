@@ -733,20 +733,29 @@ mpvue踩坑之旅，持续更新中...
 ## UglifyJsPlugin压缩配置
 
 ```javascript
-	// ./build/webpack.base.conf.js
-	var useUglifyJs = process.env.PLATFORM !== 'swan'
-	var isProduction = process.env.NODE_ENV==='production'? true : false
-	if (useUglifyJs) { // 非百度小程序开启JS代码压缩
-		baseWebpackConfig.plugins.push(
-			new webpack.optimize.UglifyJsPlugin({
-				compress:{
-				warnings: false,
-				drop_debugger: isProduction,
-				drop_console: isProduction
-				},
-				// 生产环境开启map文件生成
-				sourceMap: isProduction
-			})
-		)
+	// ./build/webpack.prod.conf.js
+	new UglifyJsPlugin({
+		sourceMap: true
+	})
+
+	// ./config/index.js文件
+	build: {
+		// ...
+		productionSourceMap: true, // 生产环境开启map文件生成
+		// ...
 	}
 ```
+
+## 引申一些小插曲
+
+		webpack中开启了map映射，但是打包一直没有map文件。
+		经检查webpack的配置都没有问题，那为什么没有生成对应的map文件呢？
+		最终找到的原因是使用uglifyjs-webpack-plugin这个插件导致的。
+		在webpack的devtool文档中，有一块不起眼的小字：
+
+> When using the uglifyjs-webpack-plugin you must provide the sourceMap: true option to enable SourceMap support.
+
+		也就是当使用了uglifyjs-webpack-plugin 插件时，sourceMap这个值的默认值是false，不开启map。
+		如果要启用map，需要在插件中配置sourceMap值为true。
+
+[webpack的devtool文档，请戳我](https://webpack.js.org/configuration/devtool/#production)
